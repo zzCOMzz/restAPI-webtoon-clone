@@ -18,10 +18,6 @@ app.use(
   serveIndex("storage/uploads", { icons: true })
 );
 
-app.use("/", (req, res) => {
-  res.send("<h1>Welcome to zzCOMzz Webtoon API</h1>");
-});
-
 app.group("/api/v1", router => {
   router.use("/user", userRoutes);
   router.use("/auth", Auth);
