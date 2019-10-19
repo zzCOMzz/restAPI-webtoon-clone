@@ -12,14 +12,15 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use("/", (req, res) => {
-  res.send("<h1>Welcome to zzCOMzz Webtoon API</h1>");
-});
 app.use(
   "/images",
   express.static("storage/uploads"),
   serveIndex("storage/uploads", { icons: true })
 );
+
+app.use("/", (req, res) => {
+  res.send("<h1>Welcome to zzCOMzz Webtoon API</h1>");
+});
 
 app.group("/api/v1", router => {
   router.use("/user", userRoutes);
