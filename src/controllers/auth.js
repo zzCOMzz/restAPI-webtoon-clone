@@ -24,7 +24,9 @@ exports.register = async (req, res, next) => {
           let newUser = new User({
             username,
             email,
-            password: hassPass
+            password: hassPass,
+            image_profile:
+              "https://static.thenounproject.com/png/994628-200.png"
           });
           return newUser.save();
         })

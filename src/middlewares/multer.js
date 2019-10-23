@@ -15,9 +15,11 @@ exports.uploadProfile = Multer.diskStorage({
     }
   },
   filename: (req, file, cb) => {
-    req.myProfilePhoto = `/images/${req.params.iduser}/My_Profile.png`;
+    req.myProfilePhoto = `/images/${
+      req.params.iduser
+    }/${new Date().toLocaleString()}-My_Profile.png`;
     // cb(null, `My_Profile${path.extname(file.originalname)}`);
-    cb(null, `My_Profile.png`);
+    cb(null, `${new Date().toLocaleString()}-My_Profile.png`);
   }
 });
 

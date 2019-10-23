@@ -106,7 +106,7 @@ const uploadImage = Multer({ storage: addEpisode });
 router.post(
   "/:iduser/webtoon/:webtoonid/episode/:episodeid/image",
   checkToken,
-  uploadImage.single("episode"),
+  uploadImage.array("episode"),
   WebtoonControllers.addImageToEpisode
 );
 
