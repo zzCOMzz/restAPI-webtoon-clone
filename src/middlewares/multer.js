@@ -1,68 +1,66 @@
-const Multer = require('multer');
-const path = require('path');
+const Multer = require("multer");
+const path = require("path");
 
 exports.Multer = Multer;
 exports.uploadProfile = Multer.diskStorage({
   destination: (req, file, cb) => {
     if (
-      file.mimetype !== 'image/png' &&
-      file.mimetype !== 'image/jpg' &&
-      file.mimetype !== 'image/jpeg'
+      file.mimetype !== "image/png" &&
+      file.mimetype !== "image/jpg" &&
+      file.mimetype !== "image/jpeg"
     ) {
-      cb(true, '');
+      cb(true, "");
     } else {
-      cb(null, 'storage/uploads/' + req.params.iduser);
+      cb(null, "storage/uploads/" + req.params.iduser);
     }
   },
   filename: (req, file, cb) => {
-    req.myProfilePhoto = `/images/${req.params.iduser}/My_Profile${path.extname(
-      file.originalname,
-    )}`;
+    req.myProfilePhoto = `/images/${req.params.iduser}/My_Profile.png`;
     // cb(null, `My_Profile${path.extname(file.originalname)}`);
     cb(null, `My_Profile.png`);
-  },
+  }
 });
 
 exports.addImageBannerWebtoon = Multer.diskStorage({
   destination: (req, file, cb) => {
     if (
-      file.mimetype !== 'image/png' &&
-      file.mimetype !== 'image/jpg' &&
-      file.mimetype !== 'image/jpeg'
+      file.mimetype !== "image/png" &&
+      file.mimetype !== "image/jpg" &&
+      file.mimetype !== "image/jpeg"
     ) {
-      cb(true, '');
+      cb(true, "");
     } else {
       cb(
         null,
-        `storage/uploads/${req.params.iduser}/${req.query.webtoontitle}`,
+        `storage/uploads/${req.params.iduser}/${req.query.webtoontitle}`
       );
     }
   },
   filename: (req, file, cb) => {
     req.bannerurl = `/images/${req.params.iduser}/${req.query.webtoontitle}/${
       req.query.webtoontitle
-    }-${new Date().getSeconds()}-webtoon-${path.extname(file.originalname)}`;
+    }-${new Date().getSeconds()}-webtoon${path.extname(file.originalname)}`;
     cb(
       null,
       `${
         req.query.webtoontitle
-      }-${new Date().getSeconds()}-webtoon-${path.extname(file.originalname)}`,
+      }-${new Date().getSeconds()}-webtoon${path.extname(file.originalname)}`
     );
-  },
+  }
 });
 
 exports.addEpisodeCover = Multer.diskStorage({
   destination: (req, file, cb) => {
     if (
-      file.mimetype !== 'image/png' &&
-      file.mimetype !== 'image/jpg' &&
-      file.mimetype !== 'image/jpeg'
+      file.mimetype !== "image/png" &&
+      file.mimetype !== "image/jpg" &&
+      file.mimetype !== "image/jpeg"
     ) {
-      cb(true, '');
+      cb(true, "");
     } else {
       cb(
         null,
-        `storage/uploads/${req.params.iduser}/${req.query.webtoontitle}/${req.query.episodetitle}`,
+        `storage/uploads/${req.params.iduser}/${req.query.webtoontitle}/${req.query.episodetitle}`
       );
     }
   },
@@ -72,31 +70,31 @@ exports.addEpisodeCover = Multer.diskStorage({
     }/${req.query.webtoontitle}-${
       req.query.episodetitle
     }-${new Date().getSeconds()}-coverEpisode-${path.extname(
-      file.originalname,
+      file.originalname
     )}`;
     cb(
       null,
       `${req.query.webtoontitle}-${
         req.query.episodetitle
       }-${new Date().getSeconds()}-coverEpisode-${path.extname(
-        file.originalname,
-      )}`,
+        file.originalname
+      )}`
     );
-  },
+  }
 });
 
 exports.addEpisode = Multer.diskStorage({
   destination: (req, file, cb) => {
     if (
-      file.mimetype !== 'image/png' &&
-      file.mimetype !== 'image/jpg' &&
-      file.mimetype !== 'image/jpeg'
+      file.mimetype !== "image/png" &&
+      file.mimetype !== "image/jpg" &&
+      file.mimetype !== "image/jpeg"
     ) {
-      cb(true, '');
+      cb(true, "");
     } else {
       cb(
         null,
-        `storage/uploads/${req.params.iduser}/${req.query.webtoontitle}/${req.query.episodetitle}`,
+        `storage/uploads/${req.params.iduser}/${req.query.webtoontitle}/${req.query.episodetitle}`
       );
     }
   },
@@ -111,7 +109,7 @@ exports.addEpisode = Multer.diskStorage({
       null,
       `${req.query.webtoontitle}-${
         req.query.episodetitle
-      }-${new Date().getSeconds()}-${file.originalname}`,
+      }-${new Date().getSeconds()}-${file.originalname}`
     );
-  },
+  }
 });
